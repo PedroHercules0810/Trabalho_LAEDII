@@ -5,29 +5,31 @@
 
 #define size 32
 
-struct contato
+typedef struct contato
 {
     char *nome;
     char *tel;
     char *email;
-    struct lista *prox;
-};
+    struct contato * prox;
+}Contato;
 
 struct lista
 {
-    struct contato *contato;
+    Contato *contato;
     struct lista *prox;
 };
 
-struct contato *criaContato(char *nome, char *tel, char *email)
+Contato *criaContato(Contato * c,char *nome, char *tel, char *email)
 {
-    struct contato *novo = (struct contato *)malloc(sizeof(struct contato));
-    novo->nome = (char *)malloc(sizeof(char));
-    novo->tel = (char *)malloc(sizeof(char));
-    novo->email = (char *)malloc(sizeof(char));
+
+    Contato *novo = (Contato *)malloc(sizeof(Contato));
+    // novo->nome = (char *)malloc(sizeof(char));
+    // novo->tel = (char *)malloc(sizeof(char));
+    // novo->email = (char *)malloc(sizeof(char));
     strcpy(novo->nome, nome);
     strcpy(novo->tel, tel);
     strcpy(novo->email, email);
+    novo->prox = c;
     return novo;
 }
 

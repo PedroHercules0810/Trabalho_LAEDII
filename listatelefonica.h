@@ -1,5 +1,5 @@
-#include"listatelefonica.cpp"
-struct contato *criaContato(char *nome, char *tel, char *email);
+#include"listatelefonica.c"
+struct contato *criaContato(Contato * c,char *nome, char *tel, char *email);
 int concatenacao(char c[]);
 int funHashDiv(int key);
 int funcHashMult(int key);
