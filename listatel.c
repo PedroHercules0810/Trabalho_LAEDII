@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <listatel.h>
+#include "listatel.h"
 
 #define size 32
 
@@ -18,8 +18,30 @@ typedef struct lista
     Contato *contato[size];
 } Lista;
 
+
+unsigned int dobra_binaria(const char *chave) {
+    unsigned int valor_resultante = 0;
+
+    for (int i = 0; i < strlen(chave); i++) {
+        valor_resultante <<= 4;
+
+        valor_resultante += chave[i];
+    }
+
+    unsigned int indice = valor_resultante % size;
+
+    return indice;
+}
+
 Contato *insere_contato(Lista *l, Contato *c, char *nome, char *tel, char *email)
 {
+
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        l->contato[i] = NULL;
+    }
+
     Contato *novo = (Contato *)malloc(sizeof(Contato));
 
     if(novo == NULL){
@@ -30,7 +52,19 @@ Contato *insere_contato(Lista *l, Contato *c, char *nome, char *tel, char *email
     strcpy(novo->nome, nome);
     strcpy(novo->tel, tel);
     strcpy(novo->email, email);
-    novo->prox = c;
+    
+
+    int indice = dobra_binaria(novo->nome);
+
+    if (l->contato[indice] == NULL)
+    {
+        l->contato[indice] = novo;
+    }
+    else{
+        l->contato[indice] = novo->prox;
+    }
+    
 
     return novo;
 }
+
