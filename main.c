@@ -10,6 +10,11 @@ int main(int argc, char const *argv[])
 
     printf("%s \n", &novo->nome);
     printf("%s", &novo->prox->nome);
+
+    int test = dobra_binaria("Pedro");
+
+    printf("%s", test);
+
     return 0;
 }
 

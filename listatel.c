@@ -18,17 +18,18 @@ typedef struct lista
     Contato *contato[size];
 } Lista;
 
+int dobra_binaria(char *chave)
+{
+    int valor_resultante = 0;
 
-unsigned int dobra_binaria(const char *chave) {
-    unsigned int valor_resultante = 0;
-
-    for (int i = 0; i < strlen(chave); i++) {
+    for (int i = 0; i < strlen(chave); i++)
+    {
         valor_resultante <<= 4;
 
         valor_resultante += chave[i];
     }
 
-    unsigned int indice = valor_resultante % size;
+    int indice = valor_resultante % size;
 
     return indice;
 }
@@ -44,7 +45,8 @@ Contato *insere_contato(Lista *l, Contato *c, char *nome, char *tel, char *email
 
     Contato *novo = (Contato *)malloc(sizeof(Contato));
 
-    if(novo == NULL){
+    if (novo == NULL)
+    {
         printf("Alocação mal sucedida! \n Encerrando execução!\n");
         exit(1);
     }
@@ -52,7 +54,6 @@ Contato *insere_contato(Lista *l, Contato *c, char *nome, char *tel, char *email
     strcpy(novo->nome, nome);
     strcpy(novo->tel, tel);
     strcpy(novo->email, email);
-    
 
     int indice = dobra_binaria(novo->nome);
 
@@ -60,11 +61,10 @@ Contato *insere_contato(Lista *l, Contato *c, char *nome, char *tel, char *email
     {
         l->contato[indice] = novo;
     }
-    else{
+    else
+    {
         l->contato[indice] = novo->prox;
     }
-    
 
     return novo;
 }
-
