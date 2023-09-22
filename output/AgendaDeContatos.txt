@@ -1,8 +1,4 @@
 Nome: mateus
 Telefone: 123
-Email: mateus@gmail.com
-
-Nome: mikael
-Telefone: 84996488895
-Email: mikael.vidal@gmail.com
+Email: gmail
 
