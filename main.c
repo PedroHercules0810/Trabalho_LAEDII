@@ -1,4 +1,5 @@
 #include <stdio.h>
+<<<<<<< HEAD
 #include "listatel.c"
 int main()
 {
@@ -85,3 +86,24 @@ while (opc != 0)
 
 return 0;
 }
+=======
+#include <stdlib.h>
+#include "listatel.c"
+
+int main(int argc, char const *argv[])
+{
+    Lista * l;
+    Contato * novo = insere_contato(l, novo, "PH", "88999325982","pedro@gmail.com");
+    novo = insere_contato(l, novo, "mATEUS", "88999325982","pedro@gmail.com");
+
+    printf("%s \n", &novo->nome);
+    printf("%s", &novo->prox->nome);
+
+    int test = dobra_binaria("Pedro");
+
+    printf("%s", test);
+
+    return 0;
+}
+
+>>>>>>> bffd035c24af7b59a18ec54c7b9ef16b214d8048
